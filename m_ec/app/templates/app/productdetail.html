@@ -1,0 +1,120 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block title %} Category{% endblock title %}
+
+{% block main-content %}
+    <div class="container my-5">
+        <div class="row flex justify-content-between">
+            <div class="img2 col-lg-5 mt-5">
+                <img src="{{product.product_image.url}}" class="image col-xs-6 col-sm-12 col-lg-12 mt-3 text-sm-center w-100 h-75" alt="">
+            </div>
+            <div class="productdetail col-lg-6">
+                <h1 style="font-family: Georgia; font-size: 50px;">{{product.title}}</h1>
+                <h5>Rs.{{product.discount_price}}/-</h5>
+                <small class="text-decoration-line-through text-muted fs-5"><del>Rs.{{product.selling_price}}/-</del></small>
+                <br><br><h4>Product Features</h4>
+                <ul class="fs-5" style="font-family: Rajdhani;">
+                    <li>{{product.description}}</li>
+                    <li>Composition: {{product.composition}}</li>
+                    <li>Use: {{product.prodapp}}</li>
+                </ul>
+                {% if request.user.is_authenticated %}
+                    <form action="{% url 'add-to-cart' %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                        <input type="hidden" name="prod_id" value="{{ product.id }}">
+                        <button type="submit" class="btn btn-primary shadow px-5 py-2">Add to Cart</button>
+                    </form>
+                    {% if totalitem >= 1 %}
+                        <a href="{% url 'checkout' %}" class="btn btn-warning shadow px-5 py-2 ms-4">Buy now</a>
+                    {% endif %}
+                {% else %}
+                    <button id="auth-popup-trigger" class="btn btn-primary shadow px-5 py-2">Add to Cart</button>
+                    <button id="auth-popup-trigger" class="btn btn-warning shadow px-5 py-2 ms-4">Buy now</button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Modal -->
+    <div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="authModalLabel">Authentication Required</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Kindly <b>"Register Your Account"</b> for buying this product.
+                </div>
+                <div class="modal-footer">
+                    <a href="{% url 'customerregistration' %}" class="btn btn-primary">Register</a>
+                    {% comment %} <a href="{% url 'login' %}" class="btn btn-danger">Login</a> {% endcomment %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock main-content %}
+
+{% block extra-js %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var authPopupTriggers = document.querySelectorAll('#auth-popup-trigger');
+            var authModal = new bootstrap.Modal(document.getElementById('authModal'));
+
+            authPopupTriggers.forEach(function(trigger) {
+                trigger.addEventListener('click', function() {
+                    authModal.show();
+                });
+            });
+        });
+    </script>
+{% endblock extra-js %}
+
+
+
+
+
+
+
+
+
+
+{% comment %} {% extends "app/base.html" %}
+{% load static %}
+{% block title %} Category{% endblock title %}
+
+{% block main-content %}
+    <div class="container my-5">
+        <div class="row flex justify-content-between">
+            <div class="img2 col-lg-5 mt-5">
+                <img src="{{product.product_image.url}}" class="image col-xs-6 col-sm-12 col-lg-12 mt-3 text-sm-center w-100 h-75" alt = "">
+            </div>
+            <div class="productdetail col-lg-6">
+                <h1 style="font-family: Georgia; font-size: 50px;">{{product.title}}</h1>
+                <h5>Rs.{{product.discount_price}}/-</h5>
+                <small class="text-decoration-line-through text-muted fs-5"><del>Rs.{{product.selling_price}}/-</del></small>
+                <br><br><h4>Product Features</h4>
+                <ul class="fs-5" style="font-family: Rajdhani;">
+                    <li>{{product.description}}</li>
+                    <li>Composition: {{product.composition}}</li>
+                    <li>Use: {{product.prodapp}}</li>
+                </ul>
+                {% if request.user.is_authenticated %}
+                    <form action="{% url 'add-to-cart' %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                        <input type="hidden" name="prod_id" value="{{ product.id }}">
+                        <button type="submit" class="btn btn-primary shadow px-5 py-2">Add to Cart</button>
+                    </form>
+                    {% if totalitem >= 1 %}
+                        <a href="{% url 'checkout' %}" class="btn btn-warning shadow px-5 py-2 ms-4">Buy now</a>
+                    {% endif %}
+                {% else %}
+                    <div class = "productdetail col-lg-64">
+                        <h1 style="font-family: Georgia; font-size: 50px;">Kindly "Register or Login Your Account" for buying this product</h1>
+                        <br><br>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock main-content %} {% endcomment %}

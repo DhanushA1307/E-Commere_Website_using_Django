@@ -1,0 +1,136 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block title %} Home{% endblock title %}
+{% comment %} {% block banner_slider %}
+    <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{% static 'app/images/banner/b1.avif' %}" class="d-block w-100" halt="...">
+          </div>
+          <div class="carousel-item active">
+            <img src="{% static 'app/images/banner/b2.jpg' %}" class="d-block w-100" halt="...">
+          </div>
+          <div class="carousel-item active">
+            <img src="{% static 'app/images/banner/b3.jpg' %}" class="d-block w-100" halt="...">
+          </div>
+          <div class="carousel-item active">
+            <img src="{% static 'app/images/banner/b4.jpg' %}" class="d-block w-100" halt="...">
+          </div>
+        </div>
+        
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class= "fixed-center text-black">Previous</span>
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+
+        
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class = "fixed-center text-black">Next</span>
+        </button>
+
+    </div>
+{% endblock banner_slider %} {% endcomment %}
+
+{% block information %}
+<br>
+{% comment %} <hr> {% endcomment %}
+<br>
+
+<div class = "container">
+    <div class = "row bg-success text-center p-5 text-white border-bottom shadow">
+        <h1>Products</h1>
+        <small class="fs-5">
+            "Welcome to Vanguard Attire, where every stitch tells a story of sophistication and style. Nestled at the intersection of timeless elegance and contemporary fashion, we curate a distinguished collection of menswear that epitomizes refinement and quality craftsmanship. At Vanguard Attire, we understand that clothing isn't just about what you wear; it's a statement of who you are. Our brand embodies the ethos of confidence, integrity, and distinction, offering discerning gentlemen an unparalleled shopping experience. From impeccably tailored suits to casual essentials infused with sartorial flair, each garment reflects our unwavering commitment to excellence. Step into our world, where every garment is infused with the essence of timeless sophistication and the promise of unparalleled quality. Discover the epitome of sartorial elegance at Vanguard Attire - where style meets substance."
+        </small>
+    </div>
+</div>
+{% endblock information %}
+
+{% block main-content %}
+    <div class="container">
+        <br><br>
+        <h2 class="text-center"> Mens Products</h2>
+        <br><br>
+        <div class="row container">
+            <div class="col-md-4 col-sm-4 mi-go wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s" style="animation-duration: 1s; animation-delay: 0.6s; animation-name:none;">
+                <div class="goodnessec buttermilk curdbgpro">
+                    <a href="{% url "category" 'SK'%}">
+                        <div class="goodnesseccont text-center">
+                            <p class="mlkpro">Socks</p>
+                                <br>
+                            <img src="{% static 'app/images/product/socks.jpeg' %}" class="img-responsive center-block" alt="">
+                            </img>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-md-4 col-sm-4 mi-go wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s" style="animation-duration: 1s; animation-delay: 0.6s; animation-name:none;">
+                <div class="goodnessec buttermilk buttermilk">
+                    <a href="{% url "category" 'WT'%}">
+                        <div class="goodnesseccont text-center">
+                            <p class="mlkpro">Watch</p>
+                                <br>
+                            <img src="{% static 'app/images/product/watch.jpg' %}" class="img-responsive center-block" alt="">
+                            </img>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-4 mi-go wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s" style="animation-duration: 1s; animation-delay: 0.6s; animation-name:none;">
+                <div class="goodnessec buttermilk smbg">
+                    <a href="{% url "category" 'CH'%}">
+                        <div class="goodnesseccont text-center">
+                            <p class="mlkpro">Chain</p>
+                                <br>
+                            <img src="{% static 'app/images/product/chain.jpg' %}" class="img-responsive center-block" alt="">
+                            </img>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row container">
+            <div class="col-md-4 col-sm-4 mi-go wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s" style="animation-duration: 1s; animation-delay: 0.6s; animation-name:none;">
+                <div class="goodnessec buttermilk curdbgpro">
+                    <a href="{% url "category" 'RG'%}">
+                        <div class="goodnesseccont text-center">
+                            <p class="mlkpro">Ring</p>
+                            <br>
+                            <img src="{% static 'app/images/product/ring.jpg' %}" class="img-responsive center-block" alt="">
+                            </img>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-md-4 col-sm-4 mi-go wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s" style="animation-duration: 1s; animation-delay: 0.6s; animation-name:none;">
+                <div class="goodnessec buttermilk buttermilk">
+                    <a href="{% url "category" 'BL'%}">
+                        <div class="goodnesseccont text-center">
+                            <p class="mlkpro">Belt</p>
+                            <br>
+                            <img src="{% static 'app/images/product/belt.jpg' %}" class="img-responsive center-block" alt="">
+                            </img>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-4 mi-go wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s" style="animation-duration: 1s; animation-delay: 0.6s; animation-name:none;">
+                <div class="goodnessec buttermilk smbg">
+                    <a href="{% url "category" 'PF'%}">
+                        <div class="goodnesseccont text-center">
+                            <p class="mlkpro">Perfume</p>
+                            <br>
+                            <img src="{% static 'app/images/product/perfume.jpg' %}" class="img-responsive center-block" alt="">
+                            </img>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock main-content %}
